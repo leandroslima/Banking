@@ -5,27 +5,21 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
-# puts "Cleaning up database..."
-# User.destroy_all
-# puts "Database cleaned"
-# puts "Creating users"
-
-# clients = Client.all
-# clients.length.times do |i|
-#   client = clients[i]
-#   User.create!(
-#     account: client.account,
-#     password: client.password,
-   # password_confirmation: client.password,
-#     email: client.email
-#   )
-# end
-
-# puts "Users created"
+puts "Cleaning up User database..."
 User.destroy_all
-User.create!(
-  email: 'email@email.com',
-  account: '123456',
-  password: '123456',
-  password_confirmation: '123456'
-)
+puts "Database cleaned"
+puts "Creating users"
+
+clients = Client.all
+clients.length.times do |i|
+  client = clients[i]
+  User.create!(
+    account: client.account,
+    password: client.password,
+    password_confirmation: client.password,
+    email: client.email,
+    message: client.message
+  )
+end
+
+puts "Users created"
